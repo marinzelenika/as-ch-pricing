@@ -1,0 +1,34 @@
+{{ define "main" }}
+<div class="container">
+  <div class="text-center mt-5 mb-5">
+   <h3 style="margin-top: 5em;" class="mb-0"><strong>{{ .Params.Name }}</strong></h3>
+    <a href="{{ .Params.ProductPageUrl }}" class="product-page-link">{{ i18n "visit" . }}</a>
+</div>
+{{ if not (strings.Contains .Params.Name "Aspose") }}
+  <div class="m-5">
+    <ul class="nav nav-pills menu justify-content-center" id="myTab">
+        <div class="wrapper">
+      <li class="nav-item active">
+        <a href="#yearly" class="nav-link active">{{ i18n "yearly" . }}</a>
+      </li>
+      <li class="nav-item">
+        <a href="#payperuse" class="nav-link">{{ i18n "pay-per-use" .}}</a>
+      </li>
+      </div>
+    </ul>
+  </div>
+  <div class="tab-content">
+    {{ partial "first-tab" . }}
+    {{ partial "second-tab" . }}
+  </div>
+  {{ else }}
+  
+  <div class="tab-content">
+    {{ partial "plugin-tab" . }}
+  </div>
+  {{ end }}
+  {{ if strings.Contains .Params.Name "Conholdate" }}
+  {{ partial "green-btn" . }}
+  {{ end }}
+</div>
+{{ end }}
