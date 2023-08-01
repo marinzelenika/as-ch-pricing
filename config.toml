@@ -1,37 +1,37 @@
-baseURL = 'https://aspose.conholdate.com/pricing/'
+baseURL = 'https://aspose.conholdate.com/'
 languageCode = 'en-us'
-title = 'Pricing information | conholdate.com'
+title = 'Pricing information | aspose.conholdate.com'
 theme = 'pricing'
 draft = "false"
 
 [module]
   [[module.mounts]]
     source = 'prebuild/public/product'
-    target = 'content'
+    target = 'content/pricing'
     lang = 'en'
   [[module.mounts]]
     source = 'prebuild/public/product'
-    target = 'content'
+    target = 'content/pricing'
     lang = 'de'
   [[module.mounts]]
     source = 'prebuild/public/product'
-    target = 'content'
+    target = 'content/pricing'
     lang = 'zh'
   [[module.mounts]]
     source = 'prebuild/public/product'
-    target = 'content'
+    target = 'content/pricing'
     lang = 'ja'
   [[module.mounts]]
     source = 'prebuild/public/product'
-    target = 'content'
+    target = 'content/pricing'
     lang = 'ru'
   [[module.mounts]]
     source = 'prebuild/public/product'
-    target = 'content'
+    target = 'content/pricing'
     lang = 'it'
   [[module.mounts]]
     source = 'prebuild/public/product'
-    target = 'content'
+    target = 'content/pricing'
     lang = 'es'
   [[module.mounts]]
     source = 'prebuild/public/product'
