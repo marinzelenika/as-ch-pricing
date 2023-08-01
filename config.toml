@@ -35,15 +35,15 @@ draft = "false"
     lang = 'es'
   [[module.mounts]]
     source = 'prebuild/public/product'
-    target = 'content'
+    target = 'content/pricing'
     lang = 'fr'
   [[module.mounts]]
     source = 'themes/pricing/content'
-    target = 'content'
+    target = 'content/pricing'
     lang = 'en'
   [[module.mounts]]
     source = 'themes/pricing/content'
-    target = 'content'
+    target = 'content/pricing'
     lang = 'de'
   [[module.mounts]]
     source = 'themes/pricing/content'
@@ -55,7 +55,7 @@ draft = "false"
     lang = 'ja'
   [[module.mounts]]
     source = 'themes/pricing/content'
-    target = 'content'
+    target = 'content/pricing'
     lang = 'ru'
   [[module.mounts]]
     source = 'themes/pricing/content'

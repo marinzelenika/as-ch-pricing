@@ -15,14 +15,14 @@
     <link rel="stylesheet" href="https://www.aspose.com/css/locale.min.css" />
     <link rel="stylesheet" href="https://aspose.conholdate.com/main.min.css">
     {{ if .Page.IsTranslated }} {{- partial "langswitcher.html" . -}} {{ end }} 
-    {{ $options := (dict "targetPath" "css/styles.css" "outputStyle" "compressed") }}
+    {{ $options := (dict "targetPath" "pricing/css/styles.css" "outputStyle" "compressed") }}
            {{ $bootstrap := resources.Get "js/bootstrap.bundle.min.js" }}
   {{ $js := slice $bootstrap | resources.Concat "js/bundle.js" | resources.Minify }}
 
   <script src="{{$js.RelPermalink}}" defer></script>
-    {{ $style := resources.Get "sass/main.scss" | toCSS  $options | minify }}
+    {{ $style := resources.Get "pricing/sass/main.scss" | toCSS  $options | minify }}
     <link rel="stylesheet" href="{{ $style.RelPermalink }}" media="screen">
-    {{ $main := resources.Get "js/index.js" | js.Build $options | resources.Minify | fingerprint -}}
+    {{ $main := resources.Get "pricing/js/index.js" | js.Build $options | resources.Minify | fingerprint -}}
     <script src="{{ $main.RelPermalink }}" integrity="{{ $main.Data.Integrity }}" defer></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
