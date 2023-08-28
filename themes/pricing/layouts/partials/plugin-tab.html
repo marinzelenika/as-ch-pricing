@@ -46,7 +46,7 @@
 
 <h2 class="mt-5 mb-4" style="text-align: center;">{{ i18n "related-plugins" . }}</h2><br>
 {{ $currentName := $.Page.Params.Name }}
-{{ range $.Site.Pages }}
+{{ range first 16 $.Site.Pages }}
 {{ if and (strings.Contains .Params.Name $famName0) (not (eq $currentName .Params.Name )) }}
 <div class="col-lg-4 col-md-6 col-sm-12">
     <div class="card text-center related-card" style="margin:0 auto; height:330px; margin-bottom:2em;">
