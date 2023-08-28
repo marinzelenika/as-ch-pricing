@@ -72,6 +72,20 @@ body {
 z-index: 9999 !important;
 position:fixed !important;
 }
+.related-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 330px;
+}
+
+.related-card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
 @media (max-width: 720px) {
     .lead {
         width: 100%;
@@ -88,6 +102,11 @@ position:fixed !important;
     .article-card{
         font-size: .3em !important;
         padding: 3px 9px !important;
+    }
+}
+@media (max-width: 899px) {
+    .plugin-card {
+        height: 560px !important;
     }
 }
 @media (max-width: 1280px) {

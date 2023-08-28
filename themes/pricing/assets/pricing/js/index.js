@@ -10,6 +10,17 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+window.onload = function() {
+  var elements = document.querySelectorAll(".limited-text");
+  for(var i=0; i<elements.length; i++) {
+      var text = elements[i].innerHTML;
+      
+      if (text.length > 210) {
+          elements[i].innerHTML = text.substring(0, 210) + "...";
+      }
+  }
+};
+
 var cardElements = document.getElementsByClassName("card");
 var limit = 130;
 

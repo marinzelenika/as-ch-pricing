@@ -14,10 +14,10 @@
     <link rel="shortcut icon" type="image/ico" href="//cms.admin.containerize.com/templates/conholdate/favicon.ico">
     <link rel="stylesheet" href="https://www.aspose.com/css/locale.min.css" />
     <link rel="stylesheet" href="https://aspose.conholdate.com/main.min.css">
-    {{ if .Page.IsTranslated }} {{- partial "langswitcher.html" . -}} {{ end }} 
+    {{/*  {{ if .Page.IsTranslated }} {{- partial "langswitcher.html" . -}} {{ end }}  */}} 
     {{ $options := (dict "targetPath" "pricing/css/styles.css" "outputStyle" "compressed") }}
            {{ $bootstrap := resources.Get "js/bootstrap.bundle.min.js" }}
-  {{ $js := slice $bootstrap | resources.Concat "js/bundle.js" | resources.Minify }}
+  {{ $js := slice $bootstrap | resources.Concat "pricing/js/bundle.js" | resources.Minify }}
 
   <script src="{{$js.RelPermalink}}" defer></script>
     {{ $style := resources.Get "pricing/sass/main.scss" | toCSS  $options | minify }}
