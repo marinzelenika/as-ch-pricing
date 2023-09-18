@@ -9,8 +9,11 @@
     "desc-Aspose.OCR Product Family": {
       "other": "Aspose.OCR is a powerful and accurate yet easy-to-use optical character recognition (OCR) API that allows you to add image recognition to any desktop or web application. It can extract text from scans, screenshots or even smartphone photos in the most popular formats in less than 10 lines of code without worrying about complicated math, machine learning, neural networks and other technical details."
     },
-    "desc-Aspose.CAD Product Family": {
-      "other": "CAD and BIM File Format Solution."
+    "desc-Aspose.Page Product Family": {
+      "other": "Aspose.Page is a library that lets developers add PS/EPS or XPS processing capabilities to their applications."
+    },
+    "desc-Aspose.Tasks Product Family": {
+      "other": "Aspose.Tasks for .NET is a class library that enables .NET applications to read and write MPP/XML files without using Microsoft Project software."
     },
     "only-supported": {
       "other": "There is currently no family pack available for this product."

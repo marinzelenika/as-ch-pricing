@@ -1,10 +1,10 @@
 <div class="tab-pane fade show active" id="yearly">
   <div class="row d-flex aligns-items-center justify-content-center">
     {{ with resources.GetRemote
-    "https://purchase-api.dynabic.com/v1.2/productFamily/site-conholdate?isArchived=&pageNumber=&pageSize=&applyDisplayOrder=true&includeProducts=false"
+    "https://purchase-api.dynabic.com/v1.2/productFamily/site-asposeorg?isArchived=&pageNumber=&pageSize=&applyDisplayOrder=true&includeProducts=false"
     }} {{ with .Err }} {{ warnf "%s" . }} {{ else }} {{ with .Content }} {{ with
     transform.Unmarshal . }} {{ range . }} {{ $url := print
-    "https://purchase-api.dynabic.com/v1.2/productFamily/site-conholdate/name-" ""
+    "https://purchase-api.dynabic.com/v1.2/productFamily/site-asposeorg/name-" ""
     .Name }} {{ with resources.GetRemote $url }} {{ with .Err }} {{ warnf "%s" .
     }} {{ else }} {{ with .Content }} {{ with transform.Unmarshal . }} {{ range
     .Products }} {{ $id := .Id }} {{ if eq $id $.Page.Params.Id }} {{ range
@@ -32,7 +32,7 @@
           {{ range .PaymentScheduleList }} {{ $SubCharges :=
           .SubscriptionPeriodCharge }}  
 
-            {{ with resources.GetRemote "https://purchase-api.dynabic.com/v1.2/productFamily/site-conholdate/name-support" }} {{ with .Err }} {{ warnf "%s" .
+            {{ with resources.GetRemote "https://purchase-api.dynabic.com/v1.2/productFamily/site-asposeorg/name-support" }} {{ with .Err }} {{ warnf "%s" .
     }} {{ else }} {{ with .Content }} {{ with transform.Unmarshal . }} {{ range $index, $value :=
     .Products }}
         {{ $supportName := .Name }}

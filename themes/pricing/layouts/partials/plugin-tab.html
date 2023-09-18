@@ -1,10 +1,9 @@
-<div class="tab-pane fade show active" id="payperuse">
-    <div class="row d-flex aligns-items-center justify-content-center">
+ <div class="row d-flex aligns-items-center justify-content-center">
           {{ with resources.GetRemote
-  "https://purchase-api.dynabic.com/v1.2/productfamily/site-ConholdateAspose?applyDisplayOrder=true&includeProducts=false"
+  "https://purchase-api.dynabic.com/v1.2/productfamily/site-asposeorg?applyDisplayOrder=true&includeProducts=false"
   }} {{ with .Err }} {{ warnf "%s" . }} {{ else }} {{ with .Content }} {{ with
   transform.Unmarshal . }} {{ range . }} {{ $famName := .Name }} {{ $splitFam := split $famName " " }} {{ $famName0 := index $splitFam 0 }} {{ $url := print
-  "https://purchase-api.dynabic.com/v1.2/productFamily/site-ConholdateAspose/name-" ""
+  "https://purchase-api.dynabic.com/v1.2/productFamily/site-asposeorg/name-" ""
   .Name }} {{ with resources.GetRemote $url }} {{ with .Err }} {{ warnf "%s" .
   }} {{ else }} {{ with .Content }} {{ with transform.Unmarshal . }} {{ range
   .Products }} {{ $id := .Id }} {{ if eq $id $.Page.Params.Id }} {{ range
@@ -13,13 +12,13 @@
       {{ if strings.Contains $name "Metered" }}
       <div class="col-lg-4 col-md-6 col-sm-12">
       <div class="card plugin-card text-center" style="margin:0 auto; height:710px; margin-bottom:2em;">
-      <div class="card-body">
+      <div class="card-body plugin-card-body">
         <h5 class="card-title"><strong>{{ $name }}</strong></h5>
-        {{ if eq $.Site.LanguageCode "en" }}
+        {{/*  {{ if eq $.Site.LanguageCode "en" }}
         <p style="font-size: x-small; color: grey;" class="license-note">{{ .LicenseNote }}</p>
-        {{ end }}
+        {{ end }}  */}}
         {{ range .PaymentScheduleList }}
-        {{ i18n "from" . }}
+        {{/*  {{ i18n "from" . }}  */}}
         <h1 class="display-4" style="margin: 12px 0">${{ .SubscriptionPeriodCharge }}<sub style="font-size: 30%; vertical-align: baseline;">/{{ i18n "year" . }}</sub></h1>
         {{ end }}
         {{/*  <p style="font-size: small"><a href="https://forum.conholdate.com">{{ i18n "with-free-support" . }}</a></p>  */}}
@@ -29,12 +28,12 @@
         <p style="margin: .5em 0;"><span title="Feature is included" class="comp-table__unicodeSymbolCheck">✓</span>{{ i18n "use-with-web-sites" . }}</p>
         <p style="margin: .5em 0;"><span title="Feature is included" class="comp-table__unicodeSymbolCheck">✓</span>{{ i18n "external-distribution" . }}</p>
         {{/*  <p style="margin: .5em 0;"><span title="Feature is included" class="comp-table__unicodeSymbolCheck">✓</span>{{ i18n "use-in-a" .}}</p>  */}}
-        <p style="margin: .5em 0;"><span title="Feature is included" class="comp-table__unicodeSymbolCheck">✓</span>{{ i18n "pay-per-use" . }} {{ i18n "license-type" . | lower }}</p>
-        <p style="margin: .5em 0;"><span title="Feature is included" class="comp-table__unicodeSymbolCheck">✓</span>{{ i18n "can-be-used" .}}</p>
+{{/*          <p style="margin: .5em 0;"><span title="Feature is included" class="comp-table__unicodeSymbolCheck">✓</span>{{ i18n "pay-per-use" . }} {{ i18n "license-type" . | lower }}</p>
+  */}}        <p style="margin: .5em 0;"><span title="Feature is included" class="comp-table__unicodeSymbolCheck">✓</span>{{ i18n "can-be-used" .}}</p>
         <p style="margin: .5em 0;"><span title="Feature is included" class="comp-table__unicodeSymbolCheck">✓</span>{{ i18n "discount-applied" . }}</p>
         <p style="margin: .5em 0;"><span title="Feature is included" class="comp-table__unicodeSymbolCheck">✓</span><a href="https://forum.conholdate.com">{{ i18n "with-free-support" . }}</a></p>
     </div>
-        {{ $linkUrl := print "https://purchase.aspose.conholdate.com/buy/cart?ppId=" ""
+        {{ $linkUrl := print "https://purchase.aspose.org/buy/cart?ppId=" ""
         $ppId }}
         <a style="margin-top: 2em;" class="btn btn-primary btn-lg fam-pack-btn1 d-flex justify-content-center align-items-center" href="{{ $linkUrl }}" target="_blank"
           ><span style="margin: auto">{{ i18n "select-only" . }}</span></a
@@ -44,33 +43,51 @@
 </div>
   {{ end }}{{ end }}{{ end }}
 
-<h2 class="mt-5 mb-4" style="text-align: center;">{{ i18n "related-plugins" . }}</h2><br>
-{{ $currentName := $.Page.Params.Name }}
-{{ range first 16 $.Site.Pages }}
-{{ if and (strings.Contains .Params.Name $famName0) (not (eq $currentName .Params.Name )) }}
-<div class="col-lg-4 col-md-6 col-sm-12">
-    <div class="card text-center related-card" style="margin:0 auto; height:330px; margin-bottom:2em;">
-    <div class="card-body related-card-body">
-      <h5 class="card-title"><strong>{{ .Params.Name }}</strong></h5>
-      {{ i18n "from" . }}
-      <h1 class="display-4" style="margin: 12px 0">$99<sub style="font-size: 30%; vertical-align: baseline;">/{{ i18n "year" . }}</sub></h1>
-        <p style="font-size: small"><a href="https://forum.conholdate.com">{{ i18n "with-free-support" . }}</a></p>
-      {{ $urlName := replace .Params.Name "." "-" }}
-      <a class="btn btn-primary btn-lg fam-pack-btn1 d-flex justify-content-center align-items-center" style="margin-top: 1em;" href="{{ .Site.BaseURL }}/pricing/{{ $urlName | urlize }}" target="_blank"
-        ><span style="margin: auto;">{{ i18n "select-only" . }}</span></a
-      >
+
+  {{ $currentName := $.Page.Params.Name }}
+  {{ $hasRelatedPlugins := false }} <!-- initialize the variable -->
+  
+  <!-- loop through the pages and set the variable to true if a related plugin is found -->
+  {{ range $.Site.Pages }}
+  {{ if and (strings.Contains .Params.Name $famName0) (not (eq $currentName .Params.Name )) }}
+  {{ $hasRelatedPlugins = true }}
+  {{ end }}
+  {{ end }}
+  
+  <!-- Display the header only if there's a related plugin -->
+  {{ if $hasRelatedPlugins }}
+  <h2 class="mt-5 mb-4" style="text-align: center;">{{ i18n "related-plugins" . }}</h2><br>
+  {{ end }}
+  
+  <!-- Now, loop again and render the plugins -->
+  {{ range $.Site.Pages }}
+  {{ if and (strings.Contains .Params.Name $famName0) (not (eq $currentName .Params.Name )) }}
+  <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="card text-center related-card" style="margin:0 auto; height:330px; margin-bottom:2em;">
+      <div class="card-body related-card-body">
+        <h6 class="card-title related-card-title"><strong>{{ .Params.Name }}</strong></h6>
+        {{ i18n "from" . }}
+        <h1 class="display-4" style="margin: 12px 0">$99<sub style="font-size: 30%; vertical-align: baseline;">/{{ i18n "year" . }}</sub></h1>
+          <p style="font-size: small"><a href="https://forum.conholdate.com">{{ i18n "with-free-support" . }}</a></p>
+        {{ $urlName := replace .Params.Name "." "-" }}
+        <a class="btn btn-primary btn-lg fam-pack-btn1 d-flex justify-content-center align-items-center" style="margin-top: 1em;" href="{{ .Site.BaseURL }}/pricing/{{ $urlName | urlize }}" target="_blank">
+          <span style="margin: auto;">{{ i18n "select-only" . }}</span>
+        </a>
+    </div>
   </div>
-</div>
-</div>
-{{ end }}{{ end }}{{ end }}{{ end }}{{ end }}{{ end }}{{ end }}{{ end }}{{ end }}
+  </div>
+  {{ end }}
+  {{ end }}
+  
+{{ end }}{{ end }}{{ end }}{{ end }}{{ end }}{{ end }}{{ end }}
 {{ end }}
 {{ end }}
 {{ end }}
 {{ end }}
 </div>
 {{/*  {{ partial "comp-table2" . }}  */}}
-<span style="margin-bottom: 1em;">{{ i18n "note" .}} <strong>USD</strong> </span>
-</div>
+<span style="margin-bottom: 2em;">{{ i18n "note" .}} <strong>USD</strong> </span>
+
 
 
 

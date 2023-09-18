@@ -1,4 +1,4 @@
-baseURL = 'https://stirring-selkie-92d0f5.netlify.app'
+baseURL = 'https://purchase.aspose.org'
 languageCode = 'en-us'
 title = 'Pricing information | aspose.conholdate.com'
 theme = 'pricing'
@@ -78,10 +78,6 @@ draft = "false"
   [[module.mounts]]
     source = 'static'
     target = 'assets'
-  
-
-[params]
-    url = "https://purchase-api.dynabic.com/v1.2/productFamily/site-conholdate?isArchived=&pageNumber=&pageSize=&applyDisplayOrder=true&includeProducts=false"
 
 
 [params.dynamicmenuid]

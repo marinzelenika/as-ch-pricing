@@ -5,7 +5,7 @@ html {
 .jumbotron {
     padding: 2.5rem 2rem;
     margin-bottom: 2rem;
-    background: rgb(255, 255, 255);
+    background: white;
     background: url(https://www.aspose.com/img/bg-newheader.webp) center center/cover no-repeat;
     color: white;
 }
@@ -13,7 +13,11 @@ html {
 .display-6 {
     font-weight: 700;
 }
+#dvMenuHeader {
+    background: white !important;
+}
 body {
+    background: white !important;
     font-family: "Poppins", sans-serif;
 }
 .breadcrumb{
@@ -86,6 +90,36 @@ position:fixed !important;
     align-items: center;
     width: 100%;
 }
+.plugin-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px !important;
+}
+
+.plugin-card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.list-card {
+    display: flex;
+    justify-content: center;
+    //align-items: center;
+}
+
+.list-card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    //align-items: center;
+    width: 100%;
+}
+.related-card-title {
+    font-size: 1.3rem;
+}
 @media (max-width: 720px) {
     .lead {
         width: 100%;
@@ -102,11 +136,6 @@ position:fixed !important;
     .article-card{
         font-size: .3em !important;
         padding: 3px 9px !important;
-    }
-}
-@media (max-width: 899px) {
-    .plugin-card {
-        height: 560px !important;
     }
 }
 @media (max-width: 1280px) {
@@ -139,11 +168,17 @@ position:fixed !important;
     .kb-lead {
         padding: .3rem 0 !important;
     }
+    .plugin-card {
+        height: 500px !important;
+    }
 }
 @media screen and (min-width: 700px) and (max-width: 1280px) {
   .temp-license-btn{
     width: 400px !important;
   }
+  .plugin-card {
+    height: 560px !important;
+}
 }
 
 hr {

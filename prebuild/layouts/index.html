@@ -1,10 +1,11 @@
 {{ with resources.GetRemote
-"https://purchase-api.dynabic.com/v1.2/productfamily/site-ConholdateAspose?applyDisplayOrder=true&includeProducts=false" }} {{ with .Err }} {{ warnf "%s" . }} {{ else }} {{ with
+"https://purchase-api.dynabic.com/v1.2/productfamily/site-asposeorg?applyDisplayOrder=true&includeProducts=false" }} {{ with .Err }} {{ warnf "%s" . }} {{ else }} {{ with
 .Content }} {{ with transform.Unmarshal . }}
 
 {{ range . }}
+{{ if not (eq .Id 196263.0) }}
 <h4>{{ .Name }}</h4>
-{{ $url := print "https://purchase-api.dynabic.com/v1.2/productFamily/site-ConholdateAspose/name-" "" .Name }}
+{{ $url := print "https://purchase-api.dynabic.com/v1.2/productFamily/site-asposeorg/name-" "" .Name }}
 {{ with resources.GetRemote $url }}
 {{ $type := "platform"}}
 {{ with .Err }} {{ warnf "%s" . }} {{ else }} {{ with
@@ -27,6 +28,7 @@
     {{/* 3. */}} {{ $resource := resources.FromString $filename $string }} 
 
     {{/* 4. */}} {{ $file := $resource.RelPermalink }}
+{{ end }}
 {{ end }}
 {{ end }}
 {{ end }}
