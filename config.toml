@@ -6,36 +6,36 @@ draft = "false"
 
 [module]
   [[module.mounts]]
-    source = 'prebuild/public/product/NET'
-    target = 'content/pricing/net/conversion'
+    source = 'prebuild/public/product'
+    target = 'content/pricing'
     lang = 'en'
   [[module.mounts]]
-    source = 'prebuild/public/product/NET'
-    target = 'content/pricing/net/conversion'
+    source = 'prebuild/public/product'
+    target = 'content/pricing'
     lang = 'de'
   [[module.mounts]]
-    source = 'prebuild/public/product/NET'
-    target = 'content/pricing/net/conversion'
+    source = 'prebuild/public/product'
+    target = 'content/pricing'
     lang = 'zh'
   [[module.mounts]]
-    source = 'prebuild/public/product/NET'
-    target = 'content/pricing/net/conversion'
+    source = 'prebuild/public/product'
+    target = 'content/pricing'
     lang = 'ja'
   [[module.mounts]]
-    source = 'prebuild/public/product/NET'
-    target = 'content/pricing/net/conversion'
+    source = 'prebuild/public/product'
+    target = 'content/pricing'
     lang = 'ru'
   [[module.mounts]]
-    source = 'prebuild/public/product/NET'
-    target = 'content/pricing/net/conversion'
+    source = 'prebuild/public/product'
+    target = 'content/pricing'
     lang = 'it'
   [[module.mounts]]
-    source = 'prebuild/public/product/NET'
-    target = 'content/pricing/net/conversion'
+    source = 'prebuild/public/product'
+    target = 'content/pricing'
     lang = 'es'
   [[module.mounts]]
-    source = 'prebuild/public/product/NET'
-    target = 'content/pricing/net/conversion'
+    source = 'prebuild/public/product'
+    target = 'content/pricing'
     lang = 'fr'
   [[module.mounts]]
     source = 'themes/pricing/content'

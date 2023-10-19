@@ -11,9 +11,14 @@
 .Content }} {{ with transform.Unmarshal . }}
 {{ range .Products }}
 {{ if eq .isArchived false }}
+<!-- Logic for URL structure -->
 {{ $productName := .Name }}
 {{ $platform := .Platform }}
 {{ $platform = replace $platform "." "" }}
+{{ $extractType := split $productName " "}}
+{{ $extractType = index $extractType 0 }}
+{{ $extractType = split $extractType "."}}
+{{ $extractType = index $extractType 1 }}
 {{ $productName = replace $productName "." "-" }}
 {{ if strings.Contains $productName "+" }}
 {{ $productName = replace $productName "+" "p" }}
@@ -22,10 +27,12 @@
 {{ $UrlName1 := index $UrlName 0 }}
 {{ $UrlName2 := split $UrlName1 "-" }}
 {{ $UrlName3 := index $UrlName2 1 }}
+{{ $UrlName4 := split $UrlName3 " " }}
+{{ $UrlName4 = delimit (after 1 $UrlName4) " " }}
 {{ $product := dict "Id" .Id "Name" .Name "Description" .Description "weight" .DisplayOrder "FamilyId" .FamilyId "LargeImg" .LargeLogoImageSrc "ProductPageUrl" .CommercialPageUrl "platform" $platform | jsonify (dict "prefix" " " "indent" "  ") }}
 
 {{/* 1. */}}{{ $string := $product }}
-    {{/* 2. */}} {{ $filename := printf "product/%s/%s.md" $platform (urlize $UrlName3) }} 
+    {{/* 2. */}} {{ $filename := printf "product/%s/%s/%s.md" $extractType $platform (urlize $UrlName4) }} 
 
     {{/* 3. */}} {{ $resource := resources.FromString $filename $string }} 
 
