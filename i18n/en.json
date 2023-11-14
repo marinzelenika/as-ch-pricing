@@ -15,6 +15,12 @@
     "desc-Aspose.Tasks Product Family": {
       "other": "Aspose.Tasks for .NET is a class library that enables .NET applications to read and write MPP/XML files without using Microsoft Project software."
     },
+    "desc-Aspose.Words Product Family": {
+      "other": "Aspose.Words is a library that lets developers add Microsoft Word processing capabilities to their applications. API can be used to build any 32-bit and 64-bit applications to generate, open, convert, edit, save and print Word documents without using Microsoft Word."
+    },
+    "desc-Aspose.TeX Product Family": {
+      "other": "Aspose.TeX is a library that allows developers to integrate TeX(LaTeX) typesetting capabilities into their applications. It also allows rendering of LaTeX math formulas and generic LaTeX fragments in PNG and SVG."
+    },
     "only-supported": {
       "other": "There is currently no family pack available for this product."
     },

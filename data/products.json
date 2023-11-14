@@ -1,10 +1,11 @@
 [
   {
     "products": [
-      { "name": "Conholdate.Total Product Family", "price": "4999" },
+      { "name": "Aspose.Words Product Family", "price": "99" },
       { "name": "Aspose.BarCode Product Family", "price": "99" },
       { "name": "Aspose.OCR Product Family", "price": "99" },
       { "name": "Aspose.Page Product Family", "price": "99" },
+      { "name": "Aspose.TeX Product Family", "price": "99" },
       { "name": "Aspose.Tasks Product Family", "price": "99" }
     ]
   }
